@@ -1,34 +1,117 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# MetaMask Wallet Integration
+
+A Next.js web application demonstrating MetaMask wallet connection with persistent session management.
+
+![App Screenshot](docs/screenshot.png)
+
+## About
+
+This project showcases a minimal implementation of Web3 wallet integration in a Next.js application. Users can connect their MetaMask browser extension, view their Ethereum account address, and maintain their connection state across browser sessions.
+
+## Features
+
+- **MetaMask Connection**: Connect and disconnect your MetaMask wallet with a single click
+- **Account Display**: Shows the connected Ethereum account address
+- **Persistent Sessions**: Automatically reconnects to MetaMask when revisiting the app (using localStorage)
+- **Animated Background**: Space-themed UI with animated stars
+- **Responsive Design**: Works on desktop and mobile devices
+
+## Tech Stack
+
+- **Next.js** 12.0.8 - React framework for server-side rendering
+- **React** 17.0.2 - UI library
+- **@web3-react/core** 6.1.9 - Web3 React hooks
+- **web3.js** 1.7.0 - Ethereum JavaScript API
+- **Material-UI** 5.3.0 - Component library for buttons
+- **CSS Modules** - Scoped styling with animations
+
+## Prerequisites
+
+- Node.js (v14 or higher)
+- npm or yarn
+- MetaMask browser extension installed
 
 ## Getting Started
 
-First, run the development server:
+### Installation
+
+```bash
+npm install
+```
+
+### Development
+
+Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+### Build
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+Create a production build:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+.
+├── config/
+│   └── web3/
+│       └── index.js          # Web3 connector configuration
+├── pages/
+│   ├── _app.js               # App wrapper with Web3ReactProvider
+│   ├── index.js              # Main page with wallet connection logic
+│   └── api/
+│       └── hello.js          # Example API route
+├── styles/
+│   ├── globals.css           # Global styles
+│   └── Home.module.css       # Home page styles with animations
+├── docs/
+│   └── screenshot.png        # App screenshot
+└── package.json
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## How It Works
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+1. The app initializes with `Web3ReactProvider` wrapping the entire application (`_app.js`)
+2. The injected connector is configured to support Ethereum mainnet (chain ID: 1)
+3. Users click "Conectar wallet" to trigger the MetaMask connection prompt
+4. Once connected, the Ethereum account address is displayed
+5. Connection state is saved to `localStorage` for persistence
+6. On subsequent visits, the app automatically attempts to reconnect
+7. Users can disconnect at any time, clearing the stored connection state
 
-## Deploy on Vercel
+## Note
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This is a learning project created in 2022 to explore Web3 wallet integration patterns. The dependencies may be outdated, and the code serves as a reference implementation rather than a production-ready solution.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+---
+
+## Versión en español
+
+### Acerca de
+
+Este proyecto demuestra una implementación mínima de integración de billetera Web3 en una aplicación Next.js. Los usuarios pueden conectar su extensión de navegador MetaMask, ver su dirección de cuenta de Ethereum y mantener el estado de conexión entre sesiones del navegador.
+
+### Características principales
+
+- Conectar y desconectar tu billetera MetaMask
+- Visualización de la dirección de cuenta Ethereum conectada
+- Sesiones persistentes con reconexión automática
+- Interfaz con tema espacial y estrellas animadas
+- Diseño responsivo para escritorio y móvil
+
+### Tecnologías
+
+Next.js, React, @web3-react, web3.js, Material-UI
+
+### Nota
+
+Proyecto de aprendizaje creado en 2022 para explorar patrones de integración de billeteras Web3.
